@@ -1,46 +1,138 @@
-# Getting Started with Create React App
+# SPA Application with Authentication and CRUD Operations
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Single Page Application (SPA) built using React, Redux, Redux Saga, TypeScript, and Material-UI. The application consists of an authentication page and a data table that allows users to perform CRUD operations on records fetched from an API.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Authentication**:
+  - Users can log in using a username and password.
+  - Displays error messages for failed login attempts.
+  - Maintains user session after page reload.
+  - Provides a logout button to end the session.
+- **Data Table**:
+  - Displays records fetched from the server in a paginated table.
+  - Supports Create, Read, Update, and Delete (CRUD) operations.
+  - Provides real-time updates to the table after each CRUD operation.
+  - Displays loading indicators during data fetching and submission.
+  - Displays error messages for failed data operations.
+  - Adapts to mobile and tablet views by displaying records as cards.
+- **Responsive Design**:
+  - Uses Material-UI components for a modern and responsive user interface.
+  - Formats dates in a compact format with time displayed in tooltips.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- Redux
+- Redux Saga
+- TypeScript
+- Material-UI
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="https://skillicons.dev/icons?i=react,redux,ts,mui" />
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To get a local copy up and running, follow these steps:
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js and npm installed on your machine.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**:
 
-### `npm run eject`
+   ```bash
+   git clone https://github.com/eugenepokalyuk/react-pryaniky.git
+   cd react-pryaniky 
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. **Install dependencies**:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. **Start the development server**:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+   ```bash
+   npm run start
+   ```
 
-## Learn More
+4. **Open the application**:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Open your browser and navigate to `http://localhost:3000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
+
+src/
+├── assets/
+│   └── fonts/
+│       └── gorizont/
+│           ├── gorizont-font.eot.ttf
+│           ├── gorizont-font.eot.woff
+│           └── gorizont-font.eot.woff2
+├── components/
+│   ├── App.tsx
+│   ├── AuthForm.tsx
+│   ├── DataCard.tsx
+│   ├── DataDialogs.tsx
+│   ├── DataTable.tsx
+│   ├── LoadingModal.tsx
+├── pages/
+│   ├── LoginPage.tsx
+│   └── DataTablePage.tsx
+├── services/
+│   └── api.ts
+├── store/
+│   ├── actions/
+│   │   ├── authActions.ts
+│   │   ├── dataActions.ts
+│   │   └── types.ts
+│   ├── reducers/
+│   │   ├── authReducer.ts
+│   │   ├── dataReducer.ts
+│   │   └── index.ts
+│   ├── sagas/
+│   │   ├── authSaga.ts
+│   │   ├── dataSaga.ts
+│   │   └── index.ts
+│   └── index.ts
+├── utils/
+│   └── consts.ts
+└── index.css
+└── index.tsx
+
+
+### Explanation of Key Files
+
+- **`src/utils/consts.ts`**: Contains constants such as the API host URL.
+- **`src/store/index.ts`**: Sets up the Redux store with Saga middleware.
+- **`src/store/reducers/index.ts`**: Combines all the reducers.
+- **`src/store/sagas/index.ts`**: Combines all the sagas.
+- **`src/store/actions/dataActions.ts`**: Defines actions for data operations.
+- **`src/components/AuthForm.tsx`**: Component for user authentication.
+- **`src/components/DataTable.tsx`**: Component for displaying data in a table with CRUD operations.
+- **`src/components/DataCard.tsx`**: Component for displaying data in card format on mobile and tablet views.
+- **`src/components/DataDialogs.tsx`**: Component for managing dialogs for adding, editing, and deleting records.
+- **`src/components/LoadingModal.tsx`**: Component for displaying a loading modal.
+- **`src/pages/DataTablePage.tsx`**: Main page component that ties everything together.
+- **`src/main.tsx`**: Entry point for the React application.
+
+## Comments
+
+- The application uses Redux Saga for handling side effects like data fetching and submitting.
+- Material-UI is used for a modern and responsive UI.
+- Date-fns is used for formatting dates and times.
+- The application ensures a smooth user experience with real-time updates and error handling.
+
+
+## Deployment
+
+To build the application for production, run:
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory, which can be deployed to any static hosting service.
