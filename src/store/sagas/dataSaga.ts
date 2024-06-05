@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { CREATE, DELETE, GET, HOST, SET } from '../../utils/consts';
+import { CREATE, DELETE, GET, SET } from '../../utils/consts';
 import {
     createDataFailure,
     createDataRequest, createDataSuccess,
@@ -27,7 +27,7 @@ function* fetchDataSaga(action: PayloadAction<string>): Generator {
     try {
         const response: AxiosResponse<DataResponse> | any = yield call(
             axios.get,
-            `${HOST}/ru/data/v3/testmethods/docs/userdocs/${GET}`,
+            `/ru/data/v3/testmethods/docs/userdocs/${GET}`,
             {
                 headers: { 'x-auth': action.payload },
             }
@@ -46,7 +46,7 @@ function* createDataSaga(action: PayloadAction<DataPayload>): Generator {
     try {
         const response: AxiosResponse<any> | any = yield call(
             axios.post,
-            `${HOST}/ru/data/v3/testmethods/docs/userdocs/${CREATE}`,
+            `/ru/data/v3/testmethods/docs/userdocs/${CREATE}`,
             action.payload.data,
             {
                 headers: { 'x-auth': action.payload.token },
@@ -67,7 +67,7 @@ function* updateDataSaga(action: PayloadAction<DataPayload>): Generator {
     try {
         const response: AxiosResponse<any> | any = yield call(
             axios.post,
-            `${HOST}/ru/data/v3/testmethods/docs/userdocs/${SET}/${action.payload.id}`,
+            `/ru/data/v3/testmethods/docs/userdocs/${SET}/${action.payload.id}`,
             action.payload.data,
             {
                 headers: { 'x-auth': action.payload.token },
@@ -88,7 +88,7 @@ function* deleteDataSaga(action: PayloadAction<DataPayload>): Generator {
     try {
         const response: AxiosResponse<any> | any = yield call(
             axios.post,
-            `${HOST}/ru/data/v3/testmethods/docs/userdocs/${DELETE}/${action.payload.id}`,
+            `/ru/data/v3/testmethods/docs/userdocs/${DELETE}/${action.payload.id}`,
             {},
             {
                 headers: { 'x-auth': action.payload.token },
